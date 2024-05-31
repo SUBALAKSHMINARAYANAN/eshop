@@ -1,12 +1,16 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 const adminController = require('./controllers/adminController');
+
 
 // Your other middleware and routes here...
 
 // Example route using the adminController
 app.get('/agents', adminController.getAgents);
 
+app.post('/admin', adminController.addAdmin);
 // Start the server
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
